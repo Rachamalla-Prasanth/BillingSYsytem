@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+       <a class="navbar-brand" th:href="@{/transactions/details}">Transactions</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/product/list">Products</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/transactions/dayreport">Day Report</a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link" href="/transactions/datesreport">Date Report</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main role="main">
+    <hr><hr><hr><hr>
+<div class="container">
+	<hr>
+    <form class="form-signin" th:action="@{/transactions/save}" method="POST" th:object="${transactions}">
+    <table class="table table-striped">
+  <thead class="table-info">
+    <tr>
+      <th scope="col">ProductName</th>
+      <th scope="col">Price</th>
+      <th scope="col">Multiplier</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" th:field="*{product}"/></td>
+      <td><input type="text" th:field="*{price}" /></td>
+      <td><input type="text" th:field="*{multiplier}"/></td>
+      <td><input type="date" th:field="*{date}"/></td>
+      <td>
+      	<input type="submit" role="button" class="btn btn-primary">
+      	<a th:href="@{/transactions/add}" role="button" class="btn btn-success">Add</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>
+</div>
+   <div class="container">
+	<h4><b>Transaction List:</b></h4>
+<table class="table table-striped">
+  <thead class="table-info">
+    <tr>
+      <th scope="col">ProductName</th>
+      <th scope="col">Price</th>
+      <th scope="col">Multiplier</th>
+      <th scope="col">Date</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="items:${tlist}">
+      <td th:text="${items.product}" />
+      <td th:text="${items.price}" />
+      <td th:text="${items.multiplier}" />
+      <td th:text="${items.date}" />
+      <td th:text="${items.total}" />
+    </tr>
+  </tbody>
+</table>
+<table>
+<tr>
+	<td>Total</td>
+	<td>  </td>
+	<td>  </td>
+	<td>  </td>
+	<td th:text="${prodtotal}"/>
+</tr>
+</table>
+</div>
+<hr>
+</main>
+
+    <footer class="container">
+      <p>&copy; Company 2017-2018</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<hr>
+    <form class="form-signin" th:action="@{/login}" method="POST" th:object="${login}">
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+        <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
+      </div>
+
+      <div class="form-label-group">
+      <label for="inputEmail">Email address:</label>
+        <input type="email" id="inputEmail" class="form-control" th:field="*{username}" placeholder="Email address" required autofocus>
+      </div>
+	<br>
+      <div class="form-label-group">
+        <label for="inputPassword">Password:</label>
+        <input type="password" id="inputPassword" class="form-control" th:field="*{password}" placeholder="Password" required>
+      </div>
+	<br>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+    </form>
+</body>
+</html>
